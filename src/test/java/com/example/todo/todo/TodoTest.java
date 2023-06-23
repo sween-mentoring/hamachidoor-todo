@@ -25,6 +25,7 @@ public class TodoTest {
         Assertions.assertThat(todo.getOwner()).isEqualTo(owner);
         Assertions.assertThat(todo.getCreateAt()).isNotNull();
         Assertions.assertThat(todo.getUpdateAt()).isNotNull();
+        Assertions.assertThat(todo.isComplete()).isEqualTo(false);
     }
 
     @Test

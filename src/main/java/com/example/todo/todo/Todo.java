@@ -10,6 +10,7 @@ public class Todo {
     private String title;
     private String content;
     private String owner;
+    private boolean isComplete;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
@@ -17,8 +18,16 @@ public class Todo {
         this.title = title;
         this.content = content;
         this.owner = owner;
+        this.isComplete = false;
         LocalDateTime now = LocalDateTime.now();
         this.createAt = now;
         this.updateAt = now;
+    }
+
+    public void modify(Todo modifiedTodo) {
+        this.title = modifiedTodo.getTitle();
+        this.content = modifiedTodo.getContent();
+        this.owner = modifiedTodo.getOwner();
+        this.updateAt = LocalDateTime.now();
     }
 }
