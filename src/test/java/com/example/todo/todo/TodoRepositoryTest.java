@@ -55,8 +55,8 @@ public class TodoRepositoryTest {
         Todo savedTodo = todoRepository.save(todo);
         todoRepository.deleteById(savedTodo.getId());
         todoRepository.deleteById(savedTodo.getId() + 1);
-        Todo notFoundTodo = todoRepository.findById(savedTodo.getId());
+        Todo deleteTodo = todoRepository.findById(savedTodo.getId());
         // then
-        Assertions.assertThat(notFoundTodo).isNull();
+        Assertions.assertThat(deleteTodo).isNull();
     }
 }

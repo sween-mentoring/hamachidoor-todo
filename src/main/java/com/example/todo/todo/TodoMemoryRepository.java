@@ -18,4 +18,9 @@ public class TodoMemoryRepository implements TodoRepository {
     public Todo findById(Long id) {
         return todos.get(id);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        todos.remove(id);
+    }
 }
