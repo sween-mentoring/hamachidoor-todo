@@ -24,7 +24,9 @@ public class TodoRepositoryTest {
         Todo todo = new Todo(title, content, owner);
         // when
         Todo savedTodo = todoRepository.save(todo);
+        Todo savedTwiceTodo = todoRepository.save(todo);
         // then
         Assertions.assertThat(savedTodo.getId()).isNotNull();
+        Assertions.assertThat(savedTodo.getId() + 1).isEqualTo(savedTwiceTodo.getId());
     }
 }

@@ -1,5 +1,16 @@
 package com.example.todo.todo;
 
-public class TodoMemoryRepository implements TodoRepository {
+import java.util.HashMap;
+import java.util.Map;
 
+public class TodoMemoryRepository implements TodoRepository {
+    private static long id;
+    private static Map<Long, Todo> todos = new HashMap<>();
+
+    @Override
+    public Todo save(Todo todo) {
+        Todo saved = new Todo(id++, todo.getTitle(), todo.getContent(), todo.getOwner());
+        todos.put(saved.getId(), saved);
+        return saved;
+    }
 }
