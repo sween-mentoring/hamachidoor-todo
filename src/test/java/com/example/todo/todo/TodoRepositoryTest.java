@@ -39,8 +39,10 @@ public class TodoRepositoryTest {
         // when
         Todo savedTodo = todoRepository.save(todo);
         Todo foundTodo = todoRepository.findById(savedTodo.getId());
+        Todo notFoundTodo = todoRepository.findById(2L);
         // then
         Assertions.assertThat(savedTodo).isEqualTo(foundTodo);
         Assertions.assertThat(savedTodo.getId()).isEqualTo(foundTodo.getId());
+        Assertions.assertThat(notFoundTodo).isNull();
     }
 }

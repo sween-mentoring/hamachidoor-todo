@@ -13,4 +13,9 @@ public class TodoMemoryRepository implements TodoRepository {
         todos.put(saved.getId(), saved);
         return saved;
     }
+
+    @Override
+    public Todo findById(Long id) {
+        return todos.get(id);
+    }
 }
