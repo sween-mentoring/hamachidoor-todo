@@ -10,8 +10,9 @@ public class TodoTest {
     private String content = "content";
     private String owner = "owner";
 
-    @DisplayName("Todo 생성 테스트")
+
     @Test
+    @DisplayName("Todo 생성 테스트")
     public void create() {
         Todo todo = new Todo(title, content, owner);
         Assertions.assertThat(todo.getTitle()).isEqualTo(title);
