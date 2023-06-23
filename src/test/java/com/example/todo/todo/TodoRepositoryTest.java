@@ -45,4 +45,18 @@ public class TodoRepositoryTest {
         Assertions.assertThat(savedTodo.getId()).isEqualTo(foundTodo.getId());
         Assertions.assertThat(notFoundTodo).isNull();
     }
+
+    @Test
+    @DisplayName("Todo 삭제 테스트")
+    public void deleteById() {
+        // given
+        Todo todo = new Todo(title, content, owner);
+        // when
+        Todo savedTodo = todoRepository.save(todo);
+        todoRepository.deleteById(savedTodo.getId());
+        todoRepository.deleteById(savedTodo.getId() + 1);
+        Todo notFoundTodo = todoRepository.findById(savedTodo.getId());
+        // then
+        Assertions.assertThat(notFoundTodo).isNull();
+    }
 }
