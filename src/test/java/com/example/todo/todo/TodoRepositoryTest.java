@@ -1,5 +1,6 @@
 package com.example.todo.todo;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,5 +29,18 @@ public class TodoRepositoryTest {
         // then
         Assertions.assertThat(savedTodo.getId()).isNotNull();
         Assertions.assertThat(savedTodo.getId() + 1).isEqualTo(savedTwiceTodo.getId());
+    }
+
+    @Test
+    @DisplayName("Todo 조회 테스트")
+    public void findByID() {
+        // given
+        Todo todo = new Todo(title, content, owner);
+        // when
+        Todo savedTodo = todoRepository.save(todo);
+        Todo foundTodo = todoRepository.findById(savedTodo.getId());
+        // then
+        Assertions.assertThat(savedTodo).isEqualTo(foundTodo);
+        Assertions.assertThat(savedTodo.getId()).isEqualTo(foundTodo.getId());
     }
 }
